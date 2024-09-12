@@ -11,7 +11,11 @@ const App = () => {
   return (
     <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js'>
       <div>
-        <Viewer fileUrl={pdfFile} plugins={[defaultLayoutPluginInstance]} />
+        <Viewer
+          theme='dark'
+          fileUrl={pdfFile}
+          plugins={[defaultLayoutPluginInstance]}
+        />
       </div>
     </Worker>
   );
