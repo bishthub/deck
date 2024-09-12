@@ -1,12 +1,20 @@
-import './App.css';
+import * as React from 'react';
+import { Viewer, Worker } from '@react-pdf-viewer/core';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import pdfFile from './assets/deck.pdf';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
-function App() {
+const App = () => {
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <iframe src={pdfFile} type='application/pdf' width='100%' height='100%' />
-    </div>
+    <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.js'>
+      <div>
+        <Viewer fileUrl={pdfFile} plugins={[defaultLayoutPluginInstance]} />
+      </div>
+    </Worker>
   );
-}
+};
 
 export default App;
